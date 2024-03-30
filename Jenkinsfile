@@ -10,9 +10,9 @@ pipeline {
         
         stage('2. Build Maven Project') {
             steps {
-                withMaven {
-                    sh "mvn --version"
-                } // withMaven will discover the generated Maven artifacts, JUnit Surefire & FailSafe reports and FindBugs reports
+               withMaven(globalMavenSettingsConfig: '', jdk: '', maven: 'maven', mavenSettingsConfig: '', traceability: true) {
+               // some block
+              }
             }
         }
         
