@@ -11,10 +11,6 @@ pipeline {
         
         stage('2. Build Maven Project') {
             steps {
-                // Build Maven project
-                sh 'export MAVEN_HOME=/opt/maven'
-                sh 'export PATH=$PATH:$MAVEN_HOME/bin'
-                sh 'echo HERE'
                 sh 'OUTPUT=$(mvn --version)'
                 sh 'echo "${OUTPUT}"'
             }
