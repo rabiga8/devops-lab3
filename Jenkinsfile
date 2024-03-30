@@ -2,19 +2,19 @@ pipeline {
     agent any
     
     stages {
-        stage('Checkout') {
+        stage('1. Checkout') {
             steps {
-                // Check out the source code from GitHub
+                //Check out the source code from GitHub
                 git 'https://github.com/rabiga8/devops-lab3.git'
             }
         }
         
-        // stage('Build Maven Project') {
-        //     steps {
-        //         // Build Maven project
-        //         sh 'mvn clean package'
-        //     }
-        // }
+        stage('2. Build Maven Project') {
+            steps {
+                // Build Maven project
+                sh 'mvn clean package'
+            }
+        }
         
         // stage('Docker Build') {
         //     steps {
