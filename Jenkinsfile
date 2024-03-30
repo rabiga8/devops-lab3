@@ -4,18 +4,18 @@ pipeline {
     stages {
         stage('1. Checkout') {
             steps {
-                //Check out the source code from GitHub
+                // Check out the source code from GitHub
                 git 'https://github.com/rabiga8/devops-lab3.git'
             }
         }
-    stages {
+        
         stage('2. Build Maven Project') {
             steps {
-            withMaven {
-               sh "mvn clean verify"
-            } // withMaven will discover the generated Maven artifacts, JUnit Surefire & FailSafe reports and FindBugs reports
-           }
-         }
+                withMaven {
+                    sh "mvn clean verify"
+                } // withMaven will discover the generated Maven artifacts, JUnit Surefire & FailSafe reports and FindBugs reports
+            }
+        }
         
         // stage('Docker Build') {
         //     steps {
@@ -40,6 +40,4 @@ pipeline {
         //     }
         // }
     }
-}
-
 }
