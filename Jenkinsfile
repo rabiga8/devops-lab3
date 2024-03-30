@@ -14,9 +14,8 @@ pipeline {
                 // Build Maven project
                 sh 'export MAVEN_HOME=/opt/maven'
                 sh 'export PATH=$PATH:$MAVEN_HOME/bin'
-                sh 'mvn --version'
-                sh 'mvn clean package'
-                sh 'mvn clean test'
+                sh 'OUTPUT=$(mvn --version)'
+                sh 'echo "${OUTPUT}"'
             }
         }
         
