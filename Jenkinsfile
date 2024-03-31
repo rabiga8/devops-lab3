@@ -19,7 +19,7 @@ pipeline {
         stage('3. Docker Build') {
             steps {
                 // Build Docker image
-                sh 'docker build -t rabiga8/rabiga_r_image .'
+                sh 'docker build . -t rabiga8/rabiga_r_image .'
             }
         }
         
