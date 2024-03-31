@@ -5,6 +5,7 @@ pipeline {
             steps {
                 // Check out the source code from GitHub
                 git 'https://github.com/rabiga8/devops-lab3.git'
+                sh "git checkout jenkins"
             }
         }
         
