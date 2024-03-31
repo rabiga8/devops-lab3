@@ -11,7 +11,7 @@ pipeline {
         stage('2. Build Maven Project') {
             steps {
                withMaven(globalMavenSettingsConfig: '', jdk: '', maven: 'maven', mavenSettingsConfig: '', traceability: true) {
-               // some block
+               sh 'mvn clean package'
               }
             }
         }
