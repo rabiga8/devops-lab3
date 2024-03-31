@@ -16,12 +16,12 @@ pipeline {
             }
         }
         
-        // stage('Docker Build') {
-        //     steps {
-        //         // Build Docker image
-        //         sh 'docker build -t your-dockerhub-username/your-image-name .'
-        //     }
-        // }
+        stage('3. Docker Build') {
+            steps {
+                // Build Docker image
+                sh 'docker build -t rabiga8/rabiga_r_image .'
+            }
+        }
         
         // stage('Docker Login') {
         //     steps {
