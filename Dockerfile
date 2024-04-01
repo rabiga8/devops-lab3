@@ -5,5 +5,3 @@
 FROM ubuntu
 
 RUN /bin/bash -c 'echo This would be apt-get or other system'
-ENV myCustomEnvVar="sample string" \ 
-    otherEnvVar="this is also sample"
