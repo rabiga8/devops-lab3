@@ -1,9 +1,8 @@
 pipeline {
     agent any
     environment {
-        DOCKER_CREDENTIALS_ID = 'rabiga8'
-        DOCKERHUB_PASSWORD = 'Adocker1.'
-        DOCKER_IMAGE_NAME = 'your-dockerhub-username/your-image-name'
+        DOCKER_CREDENTIALS_ID = '5aec70f1-576f-4bbf-8388-65b31ae0113c'
+        DOCKER_IMAGE_NAME = 'rabiga8/rabiga_r_image'
     }
     stages {
         stage('1. Checkout') {
@@ -25,13 +24,20 @@ pipeline {
         stage('3. Docker Build') {
             steps {
                 // Build Docker image
-                sh 'docker build  -t rabiga8/rabiga_r_image .'
+                sh 'docker build  -t ${DOCKER_IMAGE_NAME} .'
             }
         }
         
         stage('4. Docker Login') {
             steps {
-                sh 'docker login -u rabiga8 -p Adocker1.'
+                // Authenticate with Docker Hub using credentials
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: DOCKER_CREDENTIALS_ID, 
+                        passwordVariable: 'DOCKER_PASSWORD', 
+                        usernameVariable: 'DOCKER_USERNAME')]) {
+                    sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}"
+                }
                 
                 // Build Docker image
                 sh 'docker build -t rabiga8/rabiga_r_image .'
