@@ -32,8 +32,18 @@ pipeline {
         stage('Docker Login') {
             steps {
                 // Login to Docker Hub
-                withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_CREDENTIALS_ID', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
-                    sh "docker login -u $DOCKER_CREDENTIALS_ID -p $DOCKERHUB_PASSWORD"
+                // withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_CREDENTIALS_ID', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
+                    // sh "docker login -u $DOCKER_CREDENTIALS_ID -p $DOCKERHUB_PASSWORD"
+                                // Docker login to authenticate with Docker Hub
+                sh 'docker login -u rabiga8 -p Adocker1.'
+                // Build Docker image
+                sh 'docker build -t rabiga8/rabiga_r_image .'
+                
+                // Tag the Docker image with Docker Hub repository name
+                sh 'docker tag rabiga8/rabiga_r_image rabiga8/rabiga_r_image:latest'
+                
+                // Push Docker image to Docker Hub
+                sh 'docker push rabiga8/rabiga_r_image:latest'
                 }
             }
         }
