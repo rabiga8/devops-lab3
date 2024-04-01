@@ -1,5 +1,10 @@
 pipeline {
     agent any
+    environment {
+        DOCKER_CREDENTIALS_ID = 'rabiga8'
+        DOCKERHUB_PASSWORD = 'Adocker1.'
+        DOCKER_IMAGE_NAME = 'your-dockerhub-username/your-image-name'
+    }
     stages {
         stage('1. Checkout') {
             steps {
@@ -27,8 +32,8 @@ pipeline {
         stage('Docker Login') {
             steps {
                 // Login to Docker Hub
-                withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
-                    sh "docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD"
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_CREDENTIALS_ID', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
+                    sh "docker login -u $DOCKER_CREDENTIALS_ID -p $DOCKERHUB_PASSWORD"
                 }
             }
         }
