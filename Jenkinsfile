@@ -40,7 +40,7 @@ pipeline {
                 }
                 
                 // Build Docker image
-                sh 'docker build -t rabiga8/rabiga_r_image .'
+                sh 'docker build  -t ${DOCKER_IMAGE_NAME} .'
                 
                 // Tag the Docker image with Docker Hub repository name
                 sh 'docker tag rabiga8/rabiga_r_image rabiga8/rabiga_r_image:latest'
