@@ -24,14 +24,14 @@ pipeline {
             }
         }
         
-        // stage('Docker Login') {
-        //     steps {
-        //         // Login to Docker Hub
-        //         withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
-        //             sh "docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD"
-        //         }
-        //     }
-        // }
+        stage('Docker Login') {
+            steps {
+                // Login to Docker Hub
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
+                    sh "docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD"
+                }
+            }
+        }
         
         // stage('Docker Push') {
         //     steps {
